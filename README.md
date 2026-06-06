@@ -1,48 +1,34 @@
 # Sitio web para empresa de maquinado industrial
 
-Proyecto base para una empresa metalmecanica que necesita vender servicios y productos en linea, atender clientes locales y operar en espanol e ingles.
+Proyecto frontend-only para una empresa metalmecanica que necesita mostrar servicios y productos, captar solicitudes y operar en espanol e ingles.
 
-## Arquitectura
+## Stack
 
 - Frontend: React + Vite
-- API: Django REST Framework
-- Base de datos: PostgreSQL
-- Contenedores: Docker Compose
-- Pagos: Stripe Payment Intents
+- Contenedores: Docker Compose opcional
 
 ## Secciones incluidas
 
-- Inicio con nombre provisional, frase principal y boton de cotizacion
-- Nosotros con mision, vision y espacio para experiencia/socios
+- Inicio con nombre de marca y frase principal
+- Nosotros con mision y vision
 - Servicios y productos de maquinado
-- Catalogo con dos caminos: cotizacion o pago en linea
-- Galeria de trabajos con espacios para fotos reales
-- Contacto con formulario, telefono, correo, direccion y WhatsApp
-- Mapa preparado para insertar Google Maps
+- Catalogo con seleccion de piezas y solicitud directa
+- Galeria de trabajos
+- Contacto con formulario
+- Mapa preparado para reemplazo
 - Cambio de idioma espanol/ingles
 
-## Modelo recomendado de venta
+## Ejecutar
 
-Para maquinado industrial conviene empezar con catalogo y formulario de cotizacion porque los precios suelen cambiar por material, cantidad, tolerancias, medidas y urgencia.
+Con Node:
 
-La tienda con pago en linea ya queda como modulo opcional para productos con precio fijo. Para activarla se necesitan llaves reales de Stripe.
-
-## Configuracion
-
-Edita `backend/.env`:
-
-```env
-STRIPE_SECRET_KEY=sk_test_tu_llave
-STRIPE_WEBHOOK_SECRET=whsec_tu_webhook
+```bash
+cd frontend
+npm install
+npm run dev
 ```
 
-Edita `frontend/.env`:
-
-```env
-VITE_STRIPE_PUBLISHABLE_KEY=pk_test_tu_llave
-```
-
-Levanta el proyecto:
+Con Docker:
 
 ```bash
 docker compose up --build
@@ -54,23 +40,9 @@ Abre:
 http://localhost:5173
 ```
 
-## Webhook de Stripe
+## Flujo actual del catalogo
 
-Para desarrollo local:
-
-```bash
-stripe listen --forward-to localhost:8000/api/payments/webhook/
-```
-
-Luego copia el valor `whsec_...` en `backend/.env`.
-
-## Tarjeta de prueba
-
-```text
-4242 4242 4242 4242
-```
-
-Usa una fecha futura, cualquier CVC y cualquier codigo postal.
+El catalogo ya no depende de backend ni Stripe. El usuario selecciona productos, llena sus datos y el sitio genera una solicitud por correo usando `mailto:`.
 
 ## Contenido pendiente del cliente
 
@@ -82,9 +54,4 @@ Usa una fecha futura, cualquier CVC y cualquier codigo postal.
 - Telefono, correo, direccion y horario
 - Links de redes sociales si existen
 - Textos aprobados en ingles
-- Productos y precios si se activa tienda completa
-
-## Endpoints
-
-- `POST /api/payments/create-intent/`: crea un Payment Intent y devuelve `clientSecret`.
-- `POST /api/payments/webhook/`: actualiza el estado local del pago desde Stripe.
+- Productos y precios definitivos
