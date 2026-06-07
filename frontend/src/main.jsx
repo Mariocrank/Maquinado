@@ -24,41 +24,46 @@ const navIds = ["inicio", "nosotros", "servicios", "catalogo", "galeria", "conta
 
 const content = {
   es: {
-    nav: ["Inicio", "Nosotros", "Servicios", "Catalogo", "Galeria", "Contacto"],
+    nav: ["Inicio", "Nosotros", "Servicios", "Catálogo", "Galería", "Contacto"],
     language: "English",
     brand: "PRODUCT DESIGN AND MANUFACTURING",
     placeholderName: "R.A.M.",
     heroTitle: "Soluciones metalmecánicas de precisión para producción, mantenimiento y proyectos especiales.",
     heroText:
       "Fabricamos piezas, fixturas, herramentales y componentes industriales de alta calidad, ofreciendo atención local y cotizaciones rápidas para satisfacer las necesidades de su empresa.",
-    contactButton: "Solicitar cotizacion",
+    contactButton: "Solicitar cotización",
     catalogButton: "Ver servicios",
     stats: ["CNC y convencional", "Fixturas a medida", "Clientes locales y remotos"],
-    aboutTitle: "Taller preparado para resolver piezas criticas.",
+    aboutTitle: "Taller preparado para resolver piezas críticas.",
     aboutText:
-      "Esta seccion se completa con la historia del negocio, anos de experiencia, mision, vision y socios. La estructura ya esta lista para presentar confianza, capacidad tecnica y respuesta profesional.",
-    mission: "Mision",
-    missionText: "Entregar soluciones de maquinado confiables, medibles y listas para integrarse a produccion.",
-    vision: "Vision",
-    visionText: "Ser proveedor de referencia para empresas que necesitan precision, comunicacion clara y entregas consistentes.",
+      "Esta sección se completa con la historia del negocio, años de experiencia, misión, visión y socios. La estructura ya está lista para presentar confianza, capacidad técnica y respuesta profesional.",
+    aboutHighlights: [
+      { value: "+15", label: "años de experiencia" },
+      { value: "+500", label: "proyectos fabricados" },
+      { value: "±0.01 mm", label: "precisión alcanzable" },
+    ],
+    mission: "Misión",
+    missionText: "Entregar soluciones de maquinado confiables, medibles y listas para integrarse a producción.",
+    vision: "Visión",
+    visionText: "Ser proveedor de referencia para empresas que necesitan precisión, comunicación clara y entregas consistentes.",
     servicesTitle: "Servicios y productos",
-    servicesText: "Catalogo base editable para piezas, materiales y trabajos comunes del taller.",
-    quoteTitle: "Catalogo con cotizacion",
+    servicesText: "Catálogo base editable para piezas, materiales y trabajos comunes del taller.",
+    quoteTitle: "Catálogo con cotización",
     quoteText:
       "Recomendado para trabajos con precio variable por material, medidas, tolerancias, cantidad o urgencia.",
-    storeTitle: "Pedido directo desde la pagina",
+    storeTitle: "Pedido directo desde la página",
     storeText:
       "Para productos con precio fijo, el cliente puede seleccionar piezas y enviar una solicitud directa por correo o WhatsApp.",
-    galleryTitle: "Galeria de maquinado",
+    galleryTitle: "Galería de maquinado",
     galleryText: "Muestra visual de piezas, procesos y trabajos industriales realizados en el taller.",
-    contactTitle: "Contacto y cotizacion en linea",
-    contactText: "Formulario para clientes locales o en linea. Tambien se deja visible WhatsApp para respuesta rapida.",
-    mapTitle: "Ubicacion del taller",
-    mapText: "Reemplazar por la direccion real del cliente o insertar Google Maps embed.",
+    contactTitle: "Contacto y cotización en línea",
+    contactText: "Formulario para clientes locales o en línea. También se deja visible WhatsApp para respuesta rápida.",
+    mapTitle: "Ubicación del taller",
+    mapText: "Reemplazar por la dirección real del cliente o insertar Google Maps embed.",
     form: {
       name: "Nombre",
       email: "Correo",
-      phone: "Telefono",
+      phone: "Teléfono",
       company: "Empresa",
       service: "Servicio requerido",
       details: "Describe medidas, material, cantidad, tolerancias o archivos disponibles",
@@ -66,10 +71,13 @@ const content = {
     },
     payment: {
       title: "Compra directa",
-      text: "Selecciona un producto, completa tus datos y paga en linea con tarjeta de debito o credito.",
+      text: "Selecciona un producto, completa tus datos y paga en línea con tarjeta de débito o crédito.",
       search: "Buscar producto",
       searchPlaceholder: "Escribe el nombre de la pieza",
       noResults: "No se encontraron productos con ese nombre.",
+      noResultsTitle: "Producto no encontrado",
+      noResultsHint: "Verifica el nombre o intenta con otra palabra relacionada.",
+      clearSearch: "Limpiar búsqueda",
       added: "Agregado a la compra",
       selectedParts: "Piezas seleccionadas",
       items: "Piezas acumuladas",
@@ -77,23 +85,23 @@ const content = {
       continue: "Continuar con la solicitud",
       keepShopping: "Seguir viendo productos",
       secureTitle: "Solicitud directa",
-      secureText: "El cliente deja sus datos y el detalle de las piezas para recibir confirmacion y seguimiento.",
+      secureText: "El cliente deja sus datos y el detalle de las piezas para recibir confirmación y seguimiento.",
       product: "Producto",
       name: "Nombre del cliente",
       email: "Correo",
-      phone: "Telefono",
+      phone: "Teléfono",
       amount: "Precio",
       currency: "Moneda",
       prepare: "Agregar al pedido",
       pay: "Enviar solicitud",
-      empty: "Selecciona productos y envia la solicitud para continuar por WhatsApp o correo.",
+      empty: "Selecciona productos y envía la solicitud para continuar por WhatsApp o correo.",
       error: "Revisa los datos de la solicitud.",
     },
-    footer: "Sitio bilingue preparado para dominio, SSL, hospedaje y contenido final del cliente.",
+    footer: "Sitio bilingüe preparado para dominio, SSL, hospedaje y contenido final del cliente.",
   },
   en: {
     nav: ["Home", "About", "Services", "Catalog", "Gallery", "Contact"],
-    language: "Espanol",
+    language: "Español",
     brand: "PRODUCT DESIGN AND MANUFACTURING",
     placeholderName: "R.A.M.",
     heroTitle: "Precision metalworking for production, maintenance, and custom projects.",
@@ -105,6 +113,11 @@ const content = {
     aboutTitle: "A shop ready to solve critical parts.",
     aboutText:
       "This section will be completed with the business history, years of experience, mission, vision, and partners. The structure is ready to communicate trust, technical capability, and professional response.",
+    aboutHighlights: [
+      { value: "+15", label: "years of experience" },
+      { value: "+500", label: "projects delivered" },
+      { value: "±0.01mm", label: "achievable precision" },
+    ],
     mission: "Mission",
     missionText: "Deliver reliable machining solutions that are measurable and ready for production.",
     vision: "Vision",
@@ -138,6 +151,9 @@ const content = {
       search: "Search product",
       searchPlaceholder: "Type the part name",
       noResults: "No products were found with that name.",
+      noResultsTitle: "Product not found",
+      noResultsHint: "Check the name or try another related keyword.",
+      clearSearch: "Clear search",
       added: "Added to purchase",
       selectedParts: "Selected parts",
       items: "Items in cart",
@@ -162,10 +178,10 @@ const content = {
 };
 
 const serviceItems = [
-  { icon: Wrench, es: "Maquinado CNC", en: "CNC machining", detailEs: "Piezas de precision, produccion corta y componentes especiales.", detailEn: "Precision parts, short runs, and special components." },
-  { icon: Ruler, es: "Fixturas y herramentales", en: "Fixtures and tooling", detailEs: "Diseno y fabricacion para ensamble, inspeccion o produccion.", detailEn: "Design and fabrication for assembly, inspection, or production." },
-  { icon: ShieldCheck, es: "Materiales industriales", en: "Industrial materials", detailEs: "Aluminio, acero, inoxidable, plasticos de ingenieria y mas.", detailEn: "Aluminum, steel, stainless, engineering plastics, and more." },
-  { icon: Clock, es: "Reparacion y mantenimiento", en: "Repair and maintenance", detailEs: "Refacciones, ajustes, reemplazos y piezas urgentes.", detailEn: "Replacement parts, adjustments, repairs, and urgent parts." },
+  { icon: Wrench, es: "Maquinado CNC", en: "CNC machining", detailEs: "Piezas de precisión, producción corta y componentes especiales.", detailEn: "Precision parts, short runs, and special components." },
+  { icon: Ruler, es: "Fixturas y herramentales", en: "Fixtures and tooling", detailEs: "Diseño y fabricación para ensamble, inspección o producción.", detailEn: "Design and fabrication for assembly, inspection, or production." },
+  { icon: ShieldCheck, es: "Materiales industriales", en: "Industrial materials", detailEs: "Aluminio, acero, inoxidable, plásticos de ingeniería y más.", detailEn: "Aluminum, steel, stainless, engineering plastics, and more." },
+  { icon: Clock, es: "Reparación y mantenimiento", en: "Repair and maintenance", detailEs: "Refacciones, ajustes, reemplazos y piezas urgentes.", detailEn: "Replacement parts, adjustments, repairs, and urgent parts." },
 ];
 
 const productItems = [
@@ -185,7 +201,7 @@ const productItems = [
     currency: "mxn",
     es: "Eje maquinado CNC",
     en: "CNC machined shaft",
-    detailEs: "Eje de precision fabricado para transmision, soporte o movimiento controlado.",
+    detailEs: "Eje de precisión fabricado para transmisión, soporte o movimiento controlado.",
     detailEn: "Precision shaft built for transmission, support, or controlled motion.",
     image: "/catalogo/eje-maquinado-cnc.jpeg",
   },
@@ -195,7 +211,7 @@ const productItems = [
     currency: "mxn",
     es: "Fixture de Sujecion Industrial",
     en: "Industrial fixture",
-    detailEs: "Fixture de sujecion para ensamble, verificacion y repetibilidad en produccion.",
+    detailEs: "Fixture de sujeción para ensamble, verificación y repetibilidad en producción.",
     detailEn: "Fixture ready for assembly, inspection, and repeatability in production.",
     image: "/catalogo/fixture-sujecion-industrial.jpeg",
   },
@@ -205,7 +221,7 @@ const productItems = [
     currency: "mxn",
     es: "Molde industrial",
     en: "Industrial mold",
-    detailEs: "Molde industrial para procesos repetitivos y produccion especializada.",
+    detailEs: "Molde industrial para procesos repetitivos y producción especializada.",
     detailEn: "Industrial mold for repetitive processes and specialized production.",
     image: "/catalogo/molde-industrial.jpeg",
   },
@@ -215,7 +231,7 @@ const productItems = [
     currency: "mxn",
     es: "Placa cortadora por laser",
     en: "Laser-cut plate",
-    detailEs: "Placa cortada con precision para armado, montaje o proteccion.",
+    detailEs: "Placa cortada con precisión para armado, montaje o protección.",
     detailEn: "Precision-cut plate for assembly, mounting, or protection.",
     image: "/catalogo/placa-cortadora-laser.jpeg",
   },
@@ -225,7 +241,7 @@ const productItems = [
     currency: "mxn",
     es: "Polea de maquinado",
     en: "Machined pulley",
-    detailEs: "Polea industrial para sistemas de arrastre, sincronizacion y potencia.",
+    detailEs: "Polea industrial para sistemas de arrastre, sincronización y potencia.",
     detailEn: "Industrial pulley for drive, synchronization, and power systems.",
     image: "/catalogo/polea-maquinado.jpeg",
   },
@@ -255,7 +271,7 @@ const galleryItems = [
     id: "gal-buje",
     es: "Buje de Precision",
     en: "Precision bushing",
-    detailEs: "Acabado fino y tolerancias de ajuste para componentes de precision.",
+    detailEs: "Acabado fino y tolerancias de ajuste para componentes de precisión.",
     detailEn: "Fine finish and fitting tolerances for precision components.",
     image: "/catalogo/buje-precision.jpeg",
   },
@@ -279,7 +295,7 @@ const galleryItems = [
     id: "gal-molde",
     es: "Molde industrial",
     en: "Industrial mold",
-    detailEs: "Trabajo robusto para produccion especializada y procesos repetitivos.",
+    detailEs: "Trabajo robusto para producción especializada y procesos repetitivos.",
     detailEn: "Robust work for specialized production and repetitive processes.",
     image: "/catalogo/molde-industrial.jpeg",
   },
@@ -307,6 +323,7 @@ function App() {
   const [catalogSearch, setCatalogSearch] = useState("");
   const [checkoutReady, setCheckoutReady] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [heroVideoAvailable, setHeroVideoAvailable] = useState(true);
   const [requestForm, setRequestForm] = useState({
     product_id: "",
     customer_name: "",
@@ -316,6 +333,26 @@ function App() {
     currency: "",
   });
   const t = content[language];
+  const heroTitleLines = language === "es"
+    ? [
+        { text: "Soluciones metalmecánicas", tone: "light" },
+        { text: "de precisión", tone: "accent" },
+        { text: "para producción,", tone: "light" },
+        { text: "mantenimiento", tone: "light" },
+        { text: "y proyectos", tone: "light" },
+        { text: "especiales.", tone: "accent" },
+      ]
+    : [
+        { text: "Precision", tone: "accent" },
+        { text: "metalworking", tone: "light" },
+        { text: "for production,", tone: "light" },
+        { text: "maintenance", tone: "light" },
+        { text: "and custom", tone: "light" },
+        { text: "projects.", tone: "accent" },
+      ];
+  const heroBodyText = language === "es"
+    ? "Fabricamos piezas, fixturas, herramentales y componentes industriales de alta calidad. Brindamos atención local, tiempos de respuesta rápidos y cotizaciones oportunas para satisfacer las necesidades de su empresa."
+    : t.heroText;
   const selectedProduct = productItems.find((product) => product.id === requestForm.product_id) ?? null;
   const summaryProduct = selectedProduct ?? cartItems[cartItems.length - 1] ?? null;
   const cartTotal = cartItems
@@ -324,6 +361,35 @@ function App() {
   const filteredProducts = productItems.filter((product) =>
     (language === "es" ? product.es : product.en).toLowerCase().includes(catalogSearch.trim().toLowerCase()),
   );
+  const hasCatalogResults = filteredProducts.length > 0;
+  const displayHeroTitleLines = language === "es"
+    ? [
+        { text: "Soluciones metalmecánicas", tone: "light" },
+        { text: "de precisión", tone: "accent" },
+        { text: "para producción,", tone: "light" },
+        { text: "mantenimiento", tone: "light" },
+        { text: "y proyectos", tone: "light" },
+        { text: "especiales.", tone: "accent" },
+      ]
+    : heroTitleLines;
+  const displayHeroBodyText = language === "es"
+    ? "Fabricamos piezas, fixturas, herramentales y componentes industriales de alta calidad. Brindamos atención local, tiempos de respuesta rápidos y cotizaciones oportunas para satisfacer las necesidades de su empresa."
+    : heroBodyText;
+
+  const finalHeroTitleLines = language === "es"
+    ? [
+        { text: "Soluciones metalmecánicas", tone: "light" },
+        { text: "de precisión", tone: "light" },
+        { text: "para producción,", tone: "light" },
+        { text: "mantenimiento", tone: "light" },
+        { text: "y proyectos", tone: "light" },
+        { text: "especiales.", tone: "light" },
+      ]
+    : displayHeroTitleLines;
+  const finalHeroBodyText = language === "es"
+    ? "Fabricamos piezas, fixturas, herramentales y componentes industriales de alta calidad. Brindamos atención local, tiempos de respuesta rápidos y cotizaciones oportunas para satisfacer las necesidades de su empresa."
+    : displayHeroBodyText;
+  const finalHeroEyebrow = language === "es" ? "MAQUINADO INDUSTRIAL" : t.brand;
 
   useEffect(() => {
     document.title = "R.A.M. | Product Design and Manufacturing";
@@ -349,6 +415,44 @@ function App() {
     revealItems.forEach((item) => observer.observe(item));
 
     return () => observer.disconnect();
+  }, [filteredProducts.length, language]);
+
+  useEffect(() => {
+    const parallaxItems = document.querySelectorAll(".scroll-parallax");
+    let ticking = false;
+
+    function updateParallax() {
+      const viewportHeight = window.innerHeight || 1;
+
+      parallaxItems.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const itemCenter = rect.top + rect.height / 2;
+        const viewportCenter = viewportHeight / 2;
+        const distance = (itemCenter - viewportCenter) / viewportHeight;
+        const clamped = Math.max(-1, Math.min(1, distance));
+
+        item.style.setProperty("--parallax-shift", `${clamped * -36}px`);
+        item.style.setProperty("--parallax-scale", `${1.08 - (1 - Math.abs(clamped)) * 0.08}`);
+      });
+
+      ticking = false;
+    }
+
+    function requestTick() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    updateParallax();
+    window.addEventListener("scroll", requestTick, { passive: true });
+    window.addEventListener("resize", requestTick);
+
+    return () => {
+      window.removeEventListener("scroll", requestTick);
+      window.removeEventListener("resize", requestTick);
+    };
   }, []);
 
   function updatePaymentField(event) {
@@ -405,7 +509,7 @@ function App() {
   function submitQuote(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const subject = encodeURIComponent("Solicitud de cotizacion");
+    const subject = encodeURIComponent("Solicitud de cotización");
     const body = encodeURIComponent(
       Array.from(formData.entries())
         .map(([key, value]) => `${key}: ${value}`)
@@ -416,6 +520,11 @@ function App() {
 
   function openSection(sectionId) {
     setMenuOpen(false);
+    if (sectionId === "inicio") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.replaceState(null, "", "#inicio");
+      return;
+    }
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
     window.history.replaceState(null, "", `#${sectionId}`);
   }
@@ -438,6 +547,14 @@ function App() {
       ...currentForm,
       product_id: "",
     }));
+
+    window.setTimeout(() => {
+      document.getElementById("catalog-products")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 20);
+  }
+
+  function clearCatalogSearch() {
+    setCatalogSearch("");
 
     window.setTimeout(() => {
       document.getElementById("catalog-products")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -515,9 +632,18 @@ function App() {
 
         <section className="hero" id="inicio">
         <div className="hero-content">
-          <p className="eyebrow">{t.brand}</p>
-          <h1>{t.heroTitle}</h1>
-          <p>{t.heroText}</p>
+          <p className="eyebrow">{finalHeroEyebrow}</p>
+          <h1>
+            {finalHeroTitleLines.map((line) => (
+              <span
+                key={line.text}
+                className={line.tone === "accent" ? "hero-title-line hero-title-accent" : "hero-title-line"}
+              >
+                {line.text}
+              </span>
+            ))}
+          </h1>
+          <p>{finalHeroBodyText}</p>
           <div className="hero-actions">
             <a className="primary-link" href="#contacto">
               {t.contactButton}
@@ -527,16 +653,28 @@ function App() {
           </div>
         </div>
         <div className="hero-visual" aria-label="Industrial machining preview">
-          <video
-            className="hero-video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-          >
-            <source src={heroVideo} type="video/mp4" />
-          </video>
+          {heroVideoAvailable ? (
+            <video
+              className="hero-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/catalogo/eje-maquinado-cnc.jpeg"
+              onError={() => setHeroVideoAvailable(false)}
+            >
+              <source src={heroVideo} type="video/mp4" />
+            </video>
+          ) : (
+            <div
+              className="hero-fallback-image"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(9, 15, 14, 0.12), rgba(9, 15, 14, 0.4)), url("/catalogo/eje-maquinado-cnc.jpeg")',
+              }}
+            />
+          )}
           <div className="hero-video-overlay" />
           <div className="machine-frame">
             <span></span>
@@ -556,7 +694,7 @@ function App() {
 
         <section className="section two-column" id="nosotros">
         <div>
-          <p className="eyebrow">About</p>
+          <p className="eyebrow">{language === "es" ? "Nosotros" : "About"}</p>
           <h2>{t.aboutTitle}</h2>
           <p>{t.aboutText}</p>
         </div>
@@ -574,7 +712,7 @@ function App() {
 
         <section className="section" id="servicios">
         <div className="section-heading">
-          <p className="eyebrow">Capabilities</p>
+          <p className="eyebrow">{language === "es" ? "Capacidades" : "Capabilities"}</p>
           <h2>{t.servicesTitle}</h2>
           <p>{t.servicesText}</p>
         </div>
@@ -594,7 +732,7 @@ function App() {
 
         <section className="section catalog-section" id="catalogo">
         <div className="section-heading">
-          <p className="eyebrow">Checkout</p>
+          <p className="eyebrow">{language === "es" ? "Catálogo" : "Checkout"}</p>
           <h2>{t.payment.title}</h2>
           <p>{t.payment.text}</p>
         </div>
@@ -612,42 +750,59 @@ function App() {
             </div>
           </label>
         </div>
-        <div className="product-grid" id="catalog-products">
-          {filteredProducts.map((product) => {
-            const isSelected = requestForm.product_id === product.id;
+        {hasCatalogResults ? (
+          <div className="product-grid" id="catalog-products">
+            {filteredProducts.map((product) => {
+              const isSelected = requestForm.product_id === product.id;
 
-            return (
-              <article
-                className={isSelected ? "product-card scroll-reveal is-selected" : "product-card scroll-reveal"}
-                key={product.id}
-                onClick={() => selectProduct(product)}
-              >
-                <div
-                  className="product-image"
-                  style={{
-                    backgroundImage: `linear-gradient(rgba(9, 15, 14, 0.08), rgba(9, 15, 14, 0.28)), url("${product.image}")`,
-                  }}
-                />
-                <p className="product-price">
-                  {product.currency.toUpperCase()} ${product.amount}
-                </p>
-                <h3>{language === "es" ? product.es : product.en}</h3>
-                <p>{language === "es" ? product.detailEs : product.detailEn}</p>
-                <button
-                  type="button"
-                  className="primary-button"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    buyNow(product);
-                  }}
+              return (
+                <article
+                  className={isSelected ? "product-card scroll-reveal is-selected" : "product-card scroll-reveal"}
+                  key={product.id}
+                  onClick={() => selectProduct(product)}
                 >
-                  {t.payment.prepare}
-                </button>
-              </article>
-            );
-          })}
-        </div>
-        {!filteredProducts.length && <p className="catalog-empty">{t.payment.noResults}</p>}
+                  <div
+                    className="product-image scroll-parallax"
+                    style={{
+                      backgroundImage: `linear-gradient(rgba(9, 15, 14, 0.08), rgba(9, 15, 14, 0.28)), url("${product.image}")`,
+                    }}
+                  />
+                  <p className="product-price">
+                    {product.currency.toUpperCase()} ${product.amount}
+                  </p>
+                  <h3>{language === "es" ? product.es : product.en}</h3>
+                  <p>{language === "es" ? product.detailEs : product.detailEn}</p>
+                  <button
+                    type="button"
+                    className="primary-button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      buyNow(product);
+                    }}
+                  >
+                    {t.payment.prepare}
+                  </button>
+                </article>
+              );
+            })}
+          </div>
+        ) : null}
+        {catalogSearch.trim() && !hasCatalogResults && (
+          <div className="catalog-empty-state">
+            <div className="empty-illustration" aria-hidden="true">
+              <div className="empty-box-lid" />
+              <div className="empty-box-body" />
+              <div className="empty-search-ring" />
+              <div className="empty-search-handle" />
+            </div>
+            <h3>{t.payment.noResultsTitle}</h3>
+            <p>{t.payment.noResults}</p>
+            <p>{t.payment.noResultsHint}</p>
+            <button type="button" className="primary-button" onClick={clearCatalogSearch}>
+              {t.payment.clearSearch}
+            </button>
+          </div>
+        )}
         {summaryProduct ? (
         <>
         <section className="cart-panel" id="cart-summary">
@@ -737,7 +892,7 @@ function App() {
         <div className="gallery-grid">
           {galleryItems.map((item) => (
             <article
-              className="gallery-tile scroll-reveal"
+              className="gallery-tile scroll-reveal scroll-parallax"
               key={item.id}
               style={{
                 backgroundImage: `linear-gradient(rgba(9, 15, 14, 0.08), rgba(9, 15, 14, 0.72)), url("${item.image}")`,
