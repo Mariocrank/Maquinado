@@ -1,0 +1,137 @@
+You are working on a Vite/React frontend project called Maquinado (inside the `frontend/` folder).
+The project already has a quotation form and product listing built with static/sample data.
+Your task is to replace all static data with live API calls and wire up the quotation form to submit to the backend API.
+
+=============================================================
+ENVIRONMENT
+=============================================================
+
+The API base URL is stored in the environment variable VITE_API_URL.
+It is already configured in the .env file.
+Always read it as: import.meta.env.VITE_API_URL
+Never hardcode any URL.
+
+=============================================================
+API ENDPOINTS — ALL PUBLIC, NO AUTH NEEDED
+=============================================================
+
+1. LIST PRODUCTS
+   GET {VITE_API_URL}/maquinado/products/
+   Response:
+   [
+     {
+       "id": 1,
+       "name": "Buje de Precisión",
+       "description": "...",
+       "is_active": true,
+       "created_at": "2026-06-07T00:00:00Z"
+     },
+     ...
+   ]
+   Note: Only show products where is_active is true.
+
+2. LIST SERVICES
+   GET {VITE_API_URL}/maquinado/services/
+   Response:
+   [
+     {
+       "id": 1,
+       "name": "...",
+       "description": "...",
+       "is_active": true,
+       "created_at": "2026-06-07T00:00:00Z"
+     },
+     ...
+   ]
+   Note: Only show services where is_active is true.
+
+3. SUBMIT QUOTATION
+   POST {VITE_API_URL}/maquinado/quotations/
+   Headers: { "Content-Type": "application/json" }
+   Body:
+   {
+     "email": "visitor@example.com",   // required
+     "phone": "555-1234",              // required
+     "product": 1,                     // product id (integer) — nullable, but at least one of product or service required
+     "service": null,                  // service id (integer) — nullable, but at least one of product or service required
+     "notes": "optional message"       // optional, can be empty string
+   }
+   Success: 201 Created
+   Error:   400 Bad Request with field-level errors, e.g.:
+   {
+     "non_field_errors": ["Please select at least one product or service to quote."],
+     "email": ["Enter a valid email address."]
+   }
+
+=============================================================
+PRODUCT IMAGE MAPPING
+=============================================================
+
+Product images are NOT in the API. They are local static files living in the public/catalogo/ folder.
+A catalog mapping file is available at: /catalogo/products_catalog.json
+
+Fetch this file at runtime (it is a static JSON served by the browser).
+It has the following structure:
+[
+  { "api_id": 1, "name": "Buje de Precisión",            "image": "/catalogo/buje-precision.jpeg" },
+  { "api_id": 2, "name": "Eje Maquinado CNC",            "image": "/catalogo/eje-maquinado-cnc.jpeg" },
+  { "api_id": 3, "name": "Fixture de Sujeción Industrial","image": "/catalogo/fixture-sujecion-industrial.jpeg" },
+  { "api_id": 4, "name": "Molde Industrial",              "image": "/catalogo/molde-industrial.jpeg" },
+  { "api_id": 5, "name": "Placa Cortadora Láser",         "image": "/catalogo/placa-cortadora-laser.jpeg" },
+  { "api_id": 6, "name": "Polea Maquinada",               "image": "/catalogo/polea-maquinado.jpeg" },
+  { "api_id": 7, "name": "Refacción de Plano Bajo",       "image": "/catalogo/refaccion-plano-bajo.jpeg" },
+  { "api_id": 8, "name": "Soporte Industrial",            "image": "/catalogo/soporte-industrial.jpeg" }
+]
+
+After fetching products from the API, match each product to its image using api_id === product.id.
+If no match is found, use a default placeholder image.
+Do not remove, rename, or move any image files.
+
+=============================================================
+WHAT TO IMPLEMENT
+=============================================================
+
+1. PRODUCT LISTING
+   - Fetch products from the API on component mount.
+   - Match each product to its local image using the catalog mapping above.
+   - Render only active products (is_active: true).
+   - Show a loading state while fetching.
+   - Show a friendly error message if the request fails.
+   - Reuse the existing product card component and styles — only replace the data source.
+
+2. SERVICE LISTING
+   - Same pattern as products.
+   - Fetch services from the API and render only active ones.
+
+3. QUOTATION FORM
+   - The form already exists — do not redesign it.
+   - Replace static submission logic with a POST to the quotations endpoint.
+   - The visitor selects ONE product OR ONE service (not required to select both).
+     At least one must be selected — enforce this in the UI before submitting.
+   - Required fields: email, phone, and at least one of product or service.
+   - Optional field: notes (free text message).
+   - On success (201): show a clear success message and reset the form.
+   - On error (400): display field-level validation messages returned by the API
+     next to the relevant fields. Also display non_field_errors prominently.
+   - Show a loading/submitting state on the submit button while the request is in flight.
+
+=============================================================
+CONSTRAINTS
+=============================================================
+
+- Read the API base URL exclusively from import.meta.env.VITE_API_URL — never hardcode.
+- No authentication headers needed — all endpoints are public.
+- Reuse existing components, layout, and styles as much as possible.
+  Only replace data-fetching logic and form submission.
+- Product and service images stay in public/catalogo/ — do not attempt to load them from the API.
+- Handle loading states and API errors gracefully for all fetch calls.
+- Do not install new dependencies unless absolutely necessary. Prefer native fetch API.
+
+=============================================================
+FIRST STEPS BEFORE CODING
+=============================================================
+
+1. Read src/ to locate the existing product listing component.
+2. Read src/ to locate the existing quotation form component.
+3. Read public/catalogo/products_catalog.json to understand the image mapping.
+4. Then implement the changes described above.

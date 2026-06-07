@@ -60,14 +60,20 @@ const content = {
     contactText: "Formulario para clientes locales o en línea. También se deja visible WhatsApp para respuesta rápida.",
     mapTitle: "Ubicación del taller",
     mapText: "Reemplazar por la dirección real del cliente o insertar Google Maps embed.",
+    loading: "Cargando...",
+    loadError: "No se pudo cargar la información. Intenta de nuevo más tarde.",
+    quoteSuccessMsg: "¡Solicitud enviada! Nos pondremos en contacto pronto.",
+    selectProduct: "Seleccionar producto (opcional)",
+    selectService: "Seleccionar servicio (opcional)",
     form: {
       name: "Nombre",
       email: "Correo",
       phone: "Teléfono",
       company: "Empresa",
       service: "Servicio requerido",
-      details: "Describe medidas, material, cantidad, tolerancias o archivos disponibles",
+      details: "Notas adicionales (medidas, material, cantidad, tolerancias...)",
       send: "Enviar solicitud",
+      sending: "Enviando...",
     },
     payment: {
       title: "Compra directa",
@@ -90,8 +96,6 @@ const content = {
       name: "Nombre del cliente",
       email: "Correo",
       phone: "Teléfono",
-      amount: "Precio",
-      currency: "Moneda",
       prepare: "Agregar al pedido",
       pay: "Enviar solicitud",
       empty: "Selecciona productos y envía la solicitud para continuar por WhatsApp o correo.",
@@ -136,14 +140,20 @@ const content = {
     contactText: "Form for local or online customers. WhatsApp also stays visible for quick replies.",
     mapTitle: "Shop location",
     mapText: "Replace with the customer's real address or insert a Google Maps embed.",
+    loading: "Loading...",
+    loadError: "Could not load information. Please try again later.",
+    quoteSuccessMsg: "Request sent! We will be in touch soon.",
+    selectProduct: "Select a product (optional)",
+    selectService: "Select a service (optional)",
     form: {
       name: "Name",
       email: "Email",
       phone: "Phone",
       company: "Company",
       service: "Requested service",
-      details: "Describe dimensions, material, quantity, tolerances, or available files",
+      details: "Additional notes (dimensions, material, quantity, tolerances...)",
       send: "Send request",
+      sending: "Sending...",
     },
     payment: {
       title: "Direct purchase",
@@ -166,8 +176,6 @@ const content = {
       name: "Customer name",
       email: "Email",
       phone: "Phone",
-      amount: "Price",
-      currency: "Currency",
       prepare: "Add to request",
       pay: "Send request",
       empty: "Select products and send the request to continue by WhatsApp or email.",
@@ -177,95 +185,6 @@ const content = {
   },
 };
 
-const serviceItems = [
-  { icon: Wrench, es: "Maquinado CNC", en: "CNC machining", detailEs: "Piezas de precisión, producción corta y componentes especiales.", detailEn: "Precision parts, short runs, and special components." },
-  { icon: Ruler, es: "Fixturas y herramentales", en: "Fixtures and tooling", detailEs: "Diseño y fabricación para ensamble, inspección o producción.", detailEn: "Design and fabrication for assembly, inspection, or production." },
-  { icon: ShieldCheck, es: "Materiales industriales", en: "Industrial materials", detailEs: "Aluminio, acero, inoxidable, plásticos de ingeniería y más.", detailEn: "Aluminum, steel, stainless, engineering plastics, and more." },
-  { icon: Clock, es: "Reparación y mantenimiento", en: "Repair and maintenance", detailEs: "Refacciones, ajustes, reemplazos y piezas urgentes.", detailEn: "Replacement parts, adjustments, repairs, and urgent parts." },
-];
-
-const productItems = [
-  {
-    id: "buje-precision",
-    amount: "250.00",
-    currency: "mxn",
-    es: "Buje de Precision",
-    en: "Precision bushing",
-    detailEs: "Buje maquinado para ajuste preciso y funcionamiento confiable.",
-    detailEn: "Machined bushing for precise fit and reliable operation.",
-    image: "/catalogo/buje-precision.jpeg",
-  },
-  {
-    id: "eje-maquinado-cnc",
-    amount: "4000.00",
-    currency: "mxn",
-    es: "Eje maquinado CNC",
-    en: "CNC machined shaft",
-    detailEs: "Eje de precisión fabricado para transmisión, soporte o movimiento controlado.",
-    detailEn: "Precision shaft built for transmission, support, or controlled motion.",
-    image: "/catalogo/eje-maquinado-cnc.jpeg",
-  },
-  {
-    id: "fixtura-industrial",
-    amount: "3156.00",
-    currency: "mxn",
-    es: "Fixture de Sujecion Industrial",
-    en: "Industrial fixture",
-    detailEs: "Fixture de sujeción para ensamble, verificación y repetibilidad en producción.",
-    detailEn: "Fixture ready for assembly, inspection, and repeatability in production.",
-    image: "/catalogo/fixture-sujecion-industrial.jpeg",
-  },
-  {
-    id: "molde-industrial",
-    amount: "50000.00",
-    currency: "mxn",
-    es: "Molde industrial",
-    en: "Industrial mold",
-    detailEs: "Molde industrial para procesos repetitivos y producción especializada.",
-    detailEn: "Industrial mold for repetitive processes and specialized production.",
-    image: "/catalogo/molde-industrial.jpeg",
-  },
-  {
-    id: "placa-cortadora-laser",
-    amount: "890.00",
-    currency: "mxn",
-    es: "Placa cortadora por laser",
-    en: "Laser-cut plate",
-    detailEs: "Placa cortada con precisión para armado, montaje o protección.",
-    detailEn: "Precision-cut plate for assembly, mounting, or protection.",
-    image: "/catalogo/placa-cortadora-laser.jpeg",
-  },
-  {
-    id: "polea-maquinado",
-    amount: "1300.00",
-    currency: "mxn",
-    es: "Polea de maquinado",
-    en: "Machined pulley",
-    detailEs: "Polea industrial para sistemas de arrastre, sincronización y potencia.",
-    detailEn: "Industrial pulley for drive, synchronization, and power systems.",
-    image: "/catalogo/polea-maquinado.jpeg",
-  },
-  {
-    id: "refaccion-plano-bajo",
-    amount: "5780.00",
-    currency: "mxn",
-    es: "Refaccion especial plano bajo",
-    en: "Low-profile special spare part",
-    detailEs: "Refaccion especial fabricada sobre plano para reemplazos criticos.",
-    detailEn: "Special spare part built from drawings for critical replacements.",
-    image: "/catalogo/refaccion-plano-bajo.jpeg",
-  },
-  {
-    id: "soporte-industrial",
-    amount: "400.00",
-    currency: "mxn",
-    es: "Soporte industrial",
-    en: "Industrial support",
-    detailEs: "Soporte maquinado para fijacion, carga o montaje de componentes.",
-    detailEn: "Machined support for fastening, load handling, or component mounting.",
-    image: "/catalogo/soporte-industrial.jpeg",
-  },
-];
 const galleryItems = [
   {
     id: "gal-buje",
@@ -329,10 +248,43 @@ function App() {
     customer_name: "",
     customer_email: "",
     customer_phone: "",
-    amount: "",
-    currency: "",
   });
+
+  // API data state
+  const [apiProducts, setApiProducts] = useState([]);
+  const [apiServices, setApiServices] = useState([]);
+  const [catalogImages, setCatalogImages] = useState([]);
+  const [productsLoading, setProductsLoading] = useState(true);
+  const [servicesLoading, setServicesLoading] = useState(true);
+  const [productsError, setProductsError] = useState(false);
+  const [servicesError, setServicesError] = useState(false);
+
+  // Quotation form state
+  const [quoteForm, setQuoteForm] = useState({ email: "", phone: "", product: "", service: "", notes: "" });
+  const [quoteSubmitting, setQuoteSubmitting] = useState(false);
+  const [quoteSuccess, setQuoteSuccess] = useState(false);
+  const [quoteErrors, setQuoteErrors] = useState({});
+
   const t = content[language];
+
+  // Derived: merge API products with local images, filter active only
+  const activeProducts = apiProducts
+    .filter((p) => p.is_active)
+    .map((p) => {
+      const entry = catalogImages.find((c) => c.api_id === p.id);
+      return { ...p, image: entry?.image ?? "/catalogo/buje-precision.jpeg" };
+    });
+
+  const activeServices = apiServices.filter((s) => s.is_active);
+
+  const filteredProducts = activeProducts.filter((p) =>
+    p.name.toLowerCase().includes(catalogSearch.trim().toLowerCase()),
+  );
+
+  const hasCatalogResults = filteredProducts.length > 0;
+  const selectedProduct = activeProducts.find((p) => p.id === requestForm.product_id) ?? null;
+  const summaryProduct = selectedProduct ?? cartItems[cartItems.length - 1] ?? null;
+
   const heroTitleLines = language === "es"
     ? [
         { text: "Soluciones metalmecánicas", tone: "light" },
@@ -350,31 +302,6 @@ function App() {
         { text: "and custom", tone: "light" },
         { text: "projects.", tone: "accent" },
       ];
-  const heroBodyText = language === "es"
-    ? "Fabricamos piezas, fixturas, herramentales y componentes industriales de alta calidad. Brindamos atención local, tiempos de respuesta rápidos y cotizaciones oportunas para satisfacer las necesidades de su empresa."
-    : t.heroText;
-  const selectedProduct = productItems.find((product) => product.id === requestForm.product_id) ?? null;
-  const summaryProduct = selectedProduct ?? cartItems[cartItems.length - 1] ?? null;
-  const cartTotal = cartItems
-    .reduce((total, item) => total + Number(item.amount) * item.quantity, 0)
-    .toFixed(2);
-  const filteredProducts = productItems.filter((product) =>
-    (language === "es" ? product.es : product.en).toLowerCase().includes(catalogSearch.trim().toLowerCase()),
-  );
-  const hasCatalogResults = filteredProducts.length > 0;
-  const displayHeroTitleLines = language === "es"
-    ? [
-        { text: "Soluciones metalmecánicas", tone: "light" },
-        { text: "de precisión", tone: "accent" },
-        { text: "para producción,", tone: "light" },
-        { text: "mantenimiento", tone: "light" },
-        { text: "y proyectos", tone: "light" },
-        { text: "especiales.", tone: "accent" },
-      ]
-    : heroTitleLines;
-  const displayHeroBodyText = language === "es"
-    ? "Fabricamos piezas, fixturas, herramentales y componentes industriales de alta calidad. Brindamos atención local, tiempos de respuesta rápidos y cotizaciones oportunas para satisfacer las necesidades de su empresa."
-    : heroBodyText;
 
   const finalHeroTitleLines = language === "es"
     ? [
@@ -385,11 +312,31 @@ function App() {
         { text: "y proyectos", tone: "light" },
         { text: "especiales.", tone: "light" },
       ]
-    : displayHeroTitleLines;
+    : heroTitleLines;
+
   const finalHeroBodyText = language === "es"
     ? "Fabricamos piezas, fixturas, herramentales y componentes industriales de alta calidad. Brindamos atención local, tiempos de respuesta rápidos y cotizaciones oportunas para satisfacer las necesidades de su empresa."
-    : displayHeroBodyText;
+    : t.heroText;
+
   const finalHeroEyebrow = language === "es" ? "MAQUINADO INDUSTRIAL" : t.brand;
+
+  // Fetch products, services, and catalog image map on mount
+  useEffect(() => {
+    fetch("/catalogo/products_catalog.json")
+      .then((r) => r.json())
+      .then((data) => setCatalogImages(data))
+      .catch(() => {});
+
+    fetch(`${import.meta.env.VITE_API_URL}/maquinado/products/`)
+      .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
+      .then((data) => { setApiProducts(data); setProductsLoading(false); })
+      .catch(() => { setProductsError(true); setProductsLoading(false); });
+
+    fetch(`${import.meta.env.VITE_API_URL}/maquinado/services/`)
+      .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
+      .then((data) => { setApiServices(data); setServicesLoading(false); })
+      .catch(() => { setServicesError(true); setServicesLoading(false); });
+  }, []);
 
   useEffect(() => {
     document.title = "R.A.M. | Product Design and Manufacturing";
@@ -475,8 +422,6 @@ function App() {
     setRequestForm((currentForm) => ({
       ...currentForm,
       product_id: product.id,
-      amount: product.amount,
-      currency: product.currency,
     }));
 
     window.setTimeout(() => {
@@ -486,10 +431,7 @@ function App() {
 
   function submitOrderRequest(event) {
     event.preventDefault();
-    const itemLines = cartItems.map((item) => {
-      const label = language === "es" ? item.es : item.en;
-      return `${label} x${item.quantity} - ${item.currency.toUpperCase()} $${item.amount}`;
-    });
+    const itemLines = cartItems.map((item) => `${item.name} x${item.quantity}`);
     const subject = encodeURIComponent(language === "es" ? "Solicitud de pedido R.A.M." : "R.A.M. order request");
     const body = encodeURIComponent(
       [
@@ -497,7 +439,6 @@ function App() {
         `${t.payment.email}: ${requestForm.customer_email}`,
         `${t.payment.phone}: ${requestForm.customer_phone}`,
         `${t.payment.items}: ${cartItems.reduce((total, item) => total + item.quantity, 0)}`,
-        `${t.payment.total}: ${requestForm.currency.toUpperCase()} $${requestForm.amount}`,
         "",
         language === "es" ? "Piezas seleccionadas:" : "Selected parts:",
         ...itemLines,
@@ -506,16 +447,54 @@ function App() {
     window.location.href = `mailto:ventas@cliente.com?subject=${subject}&body=${body}`;
   }
 
-  function submitQuote(event) {
+  async function submitQuoteAPI(event) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const subject = encodeURIComponent("Solicitud de cotización");
-    const body = encodeURIComponent(
-      Array.from(formData.entries())
-        .map(([key, value]) => `${key}: ${value}`)
-        .join("\n"),
-    );
-    window.location.href = `mailto:ventas@cliente.com?subject=${subject}&body=${body}`;
+    setQuoteErrors({});
+    setQuoteSuccess(false);
+
+    if (!quoteForm.product && !quoteForm.service) {
+      setQuoteErrors({
+        non_field_errors: [
+          language === "es"
+            ? "Selecciona al menos un producto o servicio."
+            : "Please select at least one product or service.",
+        ],
+      });
+      return;
+    }
+
+    setQuoteSubmitting(true);
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/maquinado/quotations/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: quoteForm.email,
+          phone: quoteForm.phone,
+          product: quoteForm.product ? Number(quoteForm.product) : null,
+          service: quoteForm.service ? Number(quoteForm.service) : null,
+          notes: quoteForm.notes,
+        }),
+      });
+
+      if (res.status === 201) {
+        setQuoteSuccess(true);
+        setQuoteForm({ email: "", phone: "", product: "", service: "", notes: "" });
+      } else {
+        const errors = await res.json();
+        setQuoteErrors(errors);
+      }
+    } catch {
+      setQuoteErrors({
+        non_field_errors: [
+          language === "es"
+            ? "Error de conexión. Intenta de nuevo más tarde."
+            : "Connection error. Please try again later.",
+        ],
+      });
+    } finally {
+      setQuoteSubmitting(false);
+    }
   }
 
   function openSection(sectionId) {
@@ -531,11 +510,6 @@ function App() {
 
   function continueToCheckout() {
     setCheckoutReady(true);
-    setRequestForm((currentForm) => ({
-      ...currentForm,
-      amount: cartTotal,
-      currency: cartItems[0]?.currency ?? currentForm.currency,
-    }));
     window.setTimeout(() => {
       document.getElementById("checkout-flow")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 20);
@@ -580,22 +554,15 @@ function App() {
         customer_name: requestForm.customer_name,
         customer_email: requestForm.customer_email,
         customer_phone: requestForm.customer_phone,
-        amount: "",
-        currency: "",
       });
       return;
     }
 
     const nextSummaryProduct = nextItems[nextItems.length - 1];
-    const nextTotal = nextItems
-      .reduce((total, item) => total + Number(item.amount) * item.quantity, 0)
-      .toFixed(2);
 
     setRequestForm((currentForm) => ({
       ...currentForm,
       product_id: nextSummaryProduct.id,
-      amount: checkoutReady ? nextTotal : nextSummaryProduct.amount,
-      currency: nextSummaryProduct.currency,
     }));
   }
 
@@ -716,18 +683,21 @@ function App() {
           <h2>{t.servicesTitle}</h2>
           <p>{t.servicesText}</p>
         </div>
-        <div className="service-grid">
-          {serviceItems.map((service) => {
-            const Icon = service.icon;
-            return (
-              <article className="service-card scroll-reveal" key={service.es}>
-                <Icon size={26} />
-                <h3>{language === "es" ? service.es : service.en}</h3>
-                <p>{language === "es" ? service.detailEs : service.detailEn}</p>
+        {servicesLoading ? (
+          <p className="api-loading">{t.loading}</p>
+        ) : servicesError ? (
+          <p className="api-error">{t.loadError}</p>
+        ) : (
+          <div className="service-grid">
+            {activeServices.map((service) => (
+              <article className="service-card scroll-reveal" key={service.id}>
+                <Wrench size={26} />
+                <h3>{service.name}</h3>
+                <p>{service.description}</p>
               </article>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        )}
         </section>
 
         <section className="section catalog-section" id="catalogo">
@@ -750,7 +720,11 @@ function App() {
             </div>
           </label>
         </div>
-        {hasCatalogResults ? (
+        {productsLoading ? (
+          <p className="api-loading">{t.loading}</p>
+        ) : productsError ? (
+          <p className="api-error">{t.loadError}</p>
+        ) : hasCatalogResults ? (
           <div className="product-grid" id="catalog-products">
             {filteredProducts.map((product) => {
               const isSelected = requestForm.product_id === product.id;
@@ -767,11 +741,8 @@ function App() {
                       backgroundImage: `linear-gradient(rgba(9, 15, 14, 0.08), rgba(9, 15, 14, 0.28)), url("${product.image}")`,
                     }}
                   />
-                  <p className="product-price">
-                    {product.currency.toUpperCase()} ${product.amount}
-                  </p>
-                  <h3>{language === "es" ? product.es : product.en}</h3>
-                  <p>{language === "es" ? product.detailEs : product.detailEn}</p>
+                  <h3>{product.name}</h3>
+                  <p>{product.description}</p>
                   <button
                     type="button"
                     className="primary-button"
@@ -787,7 +758,7 @@ function App() {
             })}
           </div>
         ) : null}
-        {catalogSearch.trim() && !hasCatalogResults && (
+        {!productsLoading && !productsError && catalogSearch.trim() && !hasCatalogResults && (
           <div className="catalog-empty-state">
             <div className="empty-illustration" aria-hidden="true">
               <div className="empty-box-lid" />
@@ -808,19 +779,19 @@ function App() {
         <section className="cart-panel" id="cart-summary">
           <div className="cart-panel-copy">
             <p className="eyebrow">{t.payment.added}</p>
-            <h3>{language === "es" ? summaryProduct.es : summaryProduct.en}</h3>
-            <p>{language === "es" ? summaryProduct.detailEs : summaryProduct.detailEn}</p>
+            <h3>{summaryProduct.name}</h3>
+            <p>{summaryProduct.description}</p>
             <div className="cart-items-list">
               <p className="cart-items-title">{t.payment.selectedParts}</p>
               {cartItems.map((item) => (
                 <div className="cart-item-row" key={item.id}>
-                  <span>{language === "es" ? item.es : item.en}</span>
+                  <span>{item.name}</span>
                   <div className="cart-item-actions">
                     <strong>x{item.quantity}</strong>
                     <button
                       type="button"
                       className="icon-remove"
-                      aria-label={`Eliminar ${language === "es" ? item.es : item.en}`}
+                      aria-label={`Eliminar ${item.name}`}
                       onClick={(event) => {
                         event.stopPropagation();
                         removeCartItem(item.id);
@@ -835,8 +806,6 @@ function App() {
           </div>
           <div className="cart-panel-price">
             <span>{t.payment.items}: {cartItems.reduce((total, item) => total + item.quantity, 0)}</span>
-            <span>{t.payment.total}</span>
-            <strong>{summaryProduct.currency.toUpperCase()} ${cartTotal}</strong>
           </div>
           <div className="cart-panel-actions">
             <button type="button" className="primary-button" onClick={continueToCheckout}>
@@ -861,14 +830,6 @@ function App() {
             <label>
               {t.payment.phone}
               <input name="customer_phone" value={requestForm.customer_phone} onChange={updatePaymentField} />
-            </label>
-            <label>
-              {t.payment.amount}
-              <input name="amount" value={`${requestForm.currency.toUpperCase()} $${requestForm.amount}`} readOnly />
-            </label>
-            <label>
-              {t.payment.currency}
-              <input name="currency" value={requestForm.currency.toUpperCase()} readOnly />
             </label>
             <button className="primary-button">{t.payment.pay}</button>
           </form>
@@ -918,16 +879,75 @@ function App() {
             <span><MapPin size={18} /> Direccion por confirmar</span>
           </div>
         </div>
-        <form className="quote-form" onSubmit={submitQuote}>
-          <input name="nombre" placeholder={t.form.name} required />
-          <input name="correo" type="email" placeholder={t.form.email} required />
-          <input name="telefono" placeholder={t.form.phone} />
-          <input name="empresa" placeholder={t.form.company} />
-          <input name="servicio" placeholder={t.form.service} required />
-          <textarea name="detalles" placeholder={t.form.details} required />
-          <button className="primary-button">
+        <form className="quote-form" onSubmit={submitQuoteAPI}>
+          {quoteSuccess && (
+            <p className="quote-success-msg">{t.quoteSuccessMsg}</p>
+          )}
+          {quoteErrors.non_field_errors && quoteErrors.non_field_errors.map((msg, i) => (
+            <p key={i} className="quote-field-error quote-error-banner">{msg}</p>
+          ))}
+
+          <input
+            name="email"
+            type="email"
+            placeholder={t.form.email}
+            value={quoteForm.email}
+            onChange={(e) => setQuoteForm({ ...quoteForm, email: e.target.value })}
+            required
+          />
+          {quoteErrors.email && (
+            <p className="quote-field-error">{quoteErrors.email[0]}</p>
+          )}
+
+          <input
+            name="phone"
+            placeholder={t.form.phone}
+            value={quoteForm.phone}
+            onChange={(e) => setQuoteForm({ ...quoteForm, phone: e.target.value })}
+            required
+          />
+          {quoteErrors.phone && (
+            <p className="quote-field-error">{quoteErrors.phone[0]}</p>
+          )}
+
+          <select
+            name="product"
+            value={quoteForm.product}
+            onChange={(e) => setQuoteForm({ ...quoteForm, product: e.target.value })}
+          >
+            <option value="">{t.selectProduct}</option>
+            {activeProducts.map((p) => (
+              <option key={p.id} value={p.id}>{p.name}</option>
+            ))}
+          </select>
+          {quoteErrors.product && (
+            <p className="quote-field-error">{quoteErrors.product[0]}</p>
+          )}
+
+          <select
+            name="service"
+            value={quoteForm.service}
+            onChange={(e) => setQuoteForm({ ...quoteForm, service: e.target.value })}
+          >
+            <option value="">{t.selectService}</option>
+            {activeServices.map((s) => (
+              <option key={s.id} value={s.id}>{s.name}</option>
+            ))}
+          </select>
+          {quoteErrors.service && (
+            <p className="quote-field-error">{quoteErrors.service[0]}</p>
+          )}
+
+          <textarea
+            name="notes"
+            placeholder={t.form.details}
+            value={quoteForm.notes}
+            onChange={(e) => setQuoteForm({ ...quoteForm, notes: e.target.value })}
+          />
+
+          <button className="primary-button" disabled={quoteSubmitting}>
             <Send size={18} />
-            {t.form.send}
+            {quoteSubmitting ? t.form.sending : t.form.send}
           </button>
         </form>
         </section>
