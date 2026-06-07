@@ -379,7 +379,7 @@ function App() {
   const finalHeroTitleLines = language === "es"
     ? [
         { text: "Soluciones metalmecánicas", tone: "light" },
-        { text: "de precisión", tone: "light" },
+        { text: "de precisión", tone: "accent" },
         { text: "para producción,", tone: "light" },
         { text: "mantenimiento", tone: "light" },
         { text: "y proyectos", tone: "light" },
